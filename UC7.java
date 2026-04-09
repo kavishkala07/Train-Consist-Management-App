@@ -1,0 +1,61 @@
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+// Bogie class (Custom Object)
+class Bogie {
+    private String name;
+    private int capacity;
+
+    // Constructor
+    public Bogie(String name, int capacity) {
+        this.name = name;
+        this.capacity = capacity;
+    }
+
+    // Getters
+    public String getName() {
+        return name;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    // toString() for display
+    @Override
+    public String toString() {
+        return name + " (Capacity: " + capacity + ")";
+    }
+}
+
+public class TrainApp {
+
+    public static void main(String[] args) {
+
+        System.out.println("=== Train Consist Management App ===");
+
+        // Create List of Bogie objects
+        List<Bogie> bogies = new ArrayList<>();
+
+        // Add passenger bogies
+        bogies.add(new Bogie("Sleeper", 72));
+        bogies.add(new Bogie("AC Chair", 56));
+        bogies.add(new Bogie("First Class", 24));
+
+        System.out.println("\nBefore Sorting:");
+        for (Bogie b : bogies) {
+            System.out.println(b);
+        }
+
+        // Sort using Comparator (by capacity)
+        bogies.sort(Comparator.comparingInt(Bogie::getCapacity));
+
+        System.out.println("\nAfter Sorting (by Capacity - Ascending):");
+        for (Bogie b : bogies) {
+            System.out.println(b);
+        }
+
+        System.out.println("\nProgram continues...");
+    }
+}
